@@ -1,8 +1,14 @@
 # Anon Brain
 *Posts in, videos out.*
 
+<p align="center"><img src="docs/images/splash.png" alt="The Anon Brain start screen" width="800"></p>
+
 Turns a 4chan / Reddit post screenshot plus your gameplay into a narrated
 video (vertical for TikTok / Shorts / Reels, or square, portrait or widescreen), with the post's lines revealed as they're read.
+
+**[⬇ Download the latest version](https://github.com/SillyUserBrain/Anon-Brain/releases/latest)**: run
+the setup and you're done (FFmpeg is built in, no Python needed). The setup below is only for
+running it from the code.
 
 ## First-time setup
 You need **Python 3.12** and **FFmpeg** (`winget install ffmpeg`).
@@ -17,6 +23,8 @@ You need **Python 3.12** and **FFmpeg** (`winget install ffmpeg`).
 After that, just use the desktop shortcut (or **Anon Brain.bat**).
 
 ## Making a video
+<p align="center"><img src="docs/images/walkthrough.gif" alt="Clicking through the five steps, from picking gameplay to Make video" width="700"></p>
+
 1. **Gameplay**: pick a folder of recordings (best) or a single clip. Each video
    gets footage no other video has used, unless you tick **Allow repeats**.
 2. **Post**: drop in the screenshot, paste one (Ctrl+V or **Paste**), or paste
@@ -33,7 +41,9 @@ After that, just use the desktop shortcut (or **Anon Brain.bat**).
    (*Fade in each line*, *Slide down*: the post is cropped and the crop glides
    down to each line as it's read, or *Show whole post*); **Brand** has your
    handle (watermark) and an end card, with font, size, color, opacity and
-   look. Drag them on the phone or use the 9 snap spots.
+   look. Drag them on the phone or use the 9 snap spots. **Captions** swaps the
+   post for big word-by-word captions, or shows the post first and then
+   captions, in any font on your PC.
 4. **Voice & Music**: *Narrator* is the voice (free, ElevenLabs, or one of
    your own), its speed and the pause between lines. *Music & mix* is the song
    and both volumes: hit **Preview mix** and drag the sliders while it plays.
@@ -45,6 +55,12 @@ After that, just use the desktop shortcut (or **Anon Brain.bat**).
 5. **Render**: check the summary (each **Edit** jumps to that step), the
    length and which apps it fits, then hit **Make video**. When it's done, **Make another** keeps your
    gameplay, voice and music and jumps back to step 2.
+
+<p align="center">
+  <img src="docs/images/layout.png" alt="The Layout step: drag the post around a live phone preview" width="560">
+  &nbsp;
+  <img src="docs/images/captions.gif" alt="A title card, then word-by-word captions" width="240">
+</p>
 
 ## Length, speed and shortcuts
 - **Length** (step 5) shows how long the video will be and which apps take it:
@@ -64,6 +80,9 @@ After that, just use the desktop shortcut (or **Anon Brain.bat**).
 
 ## Automate (⚡ in the top bar, Ctrl+Shift+A)
 Give it subreddits and it finds posts, makes videos and posts them on a schedule.
+
+<p align="center"><img src="docs/images/automate.gif" alt="Automate: picking subreddits, filters, and the review queue" width="700"></p>
+
 - **Find posts**: subreddits, Top/Hot/New, minimum upvotes and comments, age,
   length, words to skip. **See what it would pick now** shows every post it
   looked at and why each was skipped. Posts too long for the apps you post
