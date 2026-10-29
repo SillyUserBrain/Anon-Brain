@@ -18,7 +18,14 @@ if not exist ".venv\Scripts\python.exe" (
 )
 set "PY=.venv\Scripts\python.exe"
 
-for /f "usebackq delims=" %%v in (`"%PY%" -c "from anonbrain.appinfo import VERSION; print(VERSION)"`) do set "VER=%%v"
+rem (no quotes around %PY%: cmd mangles a for /f command that starts with a quote)
+set "VER="
+for /f "usebackq delims=" %%v in (`%PY% -c "from anonbrain.appinfo import VERSION; print(VERSION)"`) do set "VER=%%v"
+if not defined VER (
+  echo  [!] Couldn't read VERSION from anonbrain\appinfo.py. Check that file for a typo.
+  pause
+  exit /b 1
+)
 echo.
 echo  Building Anon Brain %VER%
 echo.
