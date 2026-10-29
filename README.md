@@ -1,26 +1,25 @@
 # Anon Brain
 *Posts in, videos out.*
 
+> Vibe coded with Claude Opus 5.5.
+
 <p align="center"><img src="docs/images/splash.png" alt="The Anon Brain start screen" width="800"></p>
 
 Turns a 4chan / Reddit post screenshot plus your gameplay into a narrated
 video (vertical for TikTok / Shorts / Reels, or square, portrait or widescreen), with the post's lines revealed as they're read.
 
-**[⬇ Download the latest version](https://github.com/SillyUserBrain/Anon-Brain/releases/latest)**: run
-the setup and you're done (FFmpeg is built in, no Python needed). The setup below is only for
-running it from the code.
+## Install
+1. **[⬇ Download the latest version](https://github.com/SillyUserBrain/Anon-Brain/releases/latest)**
+   (the `Anon-Brain-Setup-….exe` file) and run it. No admin rights needed, and
+   everything it needs is built in.
+2. Windows may say **"Windows protected your PC"** because the app isn't signed:
+   click **More info → Run anyway**.
+3. A short tour shows you around the first time. Anon Brain is 100% free: its
+   free voices run on your PC (they download once, about 120 MB, the first
+   time you use one). For ElevenLabs voices, add your API key in **Settings**.
 
-## First-time setup
-You need **Python 3.12** and **FFmpeg** (`winget install ffmpeg`).
-
-1. Double-click **Install.bat**. It sets everything up (a few minutes the
-   first time) and puts an **Anon Brain** shortcut on your desktop.
-2. That's it. Anon Brain is 100% free: its free voices run on your PC (they
-   download once, about 120 MB, the first time you use one).
-3. Optional: for ElevenLabs voices, click **Settings**, paste your API key and
-   hit **Test & save key**.
-
-After that, just use the desktop shortcut (or **Anon Brain.bat**).
+New versions show **New update available** in the top-right corner; **Update
+now** installs them without losing anything. Windows 10 or 11 (64-bit).
 
 ## Making a video
 <p align="center"><img src="docs/images/walkthrough.gif" alt="Clicking through the five steps, from picking gameplay to Make video" width="700"></p>
@@ -112,15 +111,15 @@ Apply one in a click. In a batch, each video can use a different preset.
 
 ## Good to know
 - **No repeated footage.** In library mode, every video uses a part of your
-  recordings that hasn't been used yet. To reuse footage, click
-  "Reset used footage" on step 1.
+  recordings that hasn't been used yet. To reuse footage, tick **Allow
+  repeats** or click **Reset used footage** on step 1.
 - **ElevenLabs credits** are only spent once per post. Previewing and then
   rendering the same text reuses the same narration.
 - **Text cleanup** (Settings → Text cleanup): shorthand on the left is read
   as the words on the right. Edit cells, add rows with **+**, sort by newest
   or A–Z.
 - **Pauses**: each line is voiced separately with a pause between (adjustable
-  on step 3). Inside a line, a comma adds a short breath and "..." a longer one.
+  on step 4). Inside a line, a comma adds a short breath and "..." a longer one.
 - **No voice** makes a silent video with the timed reveal.
 - **Your own voices** (Settings → Voices, or "＋ Add your own voice…" in the
   voice list): ElevenLabs voice IDs, Piper voice files (.onnx + .onnx.json),
@@ -130,68 +129,12 @@ Apply one in a click. In a batch, each video can use a different preset.
 - Your settings, cleanup list and footage history are stored in
   `%APPDATA%\AnonBrain`. Your API key is stored in Windows Credential Manager.
 
-## Sharing it (installer)
-1. Double-click **build_exe.bat** (after Install.bat). It gets FFmpeg (copies
-   yours, or downloads it), builds the app, installs the free Inno Setup tool
-   the first time, and makes **dist\Anon-Brain-Setup-1.0.0.exe**.
-2. Send your friends that one file. It installs like a normal app (no admin
-   needed): Start menu entry, optional desktop shortcut, and an uninstaller in
-   Windows Settings → Apps. FFmpeg is built in.
-3. Windows may say "Windows protected your PC" the first time because the app
-   isn't signed: **More info → Run anyway**.
+## Something not working?
+Settings → About → **Copy error details** (also offered next to error messages
+and in the crash window), then paste it into a new
+[issue](https://github.com/SillyUserBrain/Anon-Brain/issues). It never
+includes your keys or sign-ins.
 
-Before each new build, raise `VERSION` in `anonbrain/appinfo.py` so you can
-tell builds apart (Settings → About shows it). Updating = run the new setup;
-settings, history and voices are kept (they live in `%APPDATA%\AnonBrain`).
-
-### Sending out updates
-One-time: make a **public** GitHub repository and put its name in
-`UPDATE_REPO` in `anonbrain/appinfo.py` (e.g. `"yourname/anon-brain"`), then
-build. Every copy built after that checks for updates.
-
-For each update:
-1. Raise `VERSION` in `anonbrain/appinfo.py` (e.g. `1.0.1`) and run build_exe.bat.
-2. On GitHub: **Releases → Draft a new release**, tag `v1.0.1`, write what's
-   new (people see it in the app), and attach `dist\Anon-Brain-Setup-1.0.1.exe`.
-   Publish.
-3. Everyone's app shows **New update available** in the top-right corner.
-   **Update now** downloads the setup, installs over the old version and
-   reopens the app. Nothing to uninstall, and nothing is lost.
-
-**When something breaks on a friend's PC:** Settings → About → **Copy error
-details** (also offered next to error messages and in the crash window), then
-they paste it to you. Logs are in `%APPDATA%\AnonBrain\logs`. Running
-`"Anon Brain.exe" --selftest` checks every engine and writes `selftest.txt`
-in that folder.
-
-## Checking everything still works
-Double-click **run_tests.bat** (after Install.bat). In about a minute it makes
-nine real test videos (posts, slide reveal, captions, threads, 24/60 fps movie
-clips, a music folder, previews), clicks through every screen of the app in the background, and
-checks the smaller pieces (links, schedules, settings, fonts...). It ends with
-`33 passed, 0 failed` when all is well; anything else is listed by name. Run it
-before building a new version. `run_tests.bat quick` skips the video renders.
-It uses a throwaway data folder, so your settings and history aren't touched.
-
-## Files
-- `app.py`: starts the app; `anonbrain/appinfo.py`: version, logs, crash reports
-- `anonbrain/updates.py` + `ui/updates_ui.py`: update checks and updating in place
-- `anonbrain/ui/tour.py`: the first-run tour
-- `build_exe.bat` + `anonbrain.spec` + `installer.iss`: the installer build
-- `anonbrain/engine.py`: FFmpeg video building
-- `anonbrain/library.py`: gameplay library / no-repeat footage
-- `anonbrain/music.py`: music folder (random song, random part)
-- `anonbrain/ocr.py`: reads text from screenshots (offline)
-- `anonbrain/cleanup.py`: shorthand → spoken words
-- `anonbrain/voice.py`: narration (line by line, with pauses)
-- `anonbrain/free_tts.py`: free offline voices (Kokoro)
-- `anonbrain/custom_voices.py`: your own voices (Piper, Kokoro files, mixes, servers)
-- `anonbrain/reveal.py`: line timing, fade-in frames and the slide-down plan
-- `anonbrain/links.py` + `cards.py`: Reddit / 4chan links drawn as post cards
-- `anonbrain/presets.py`: saved looks; `anonbrain/ui/brand.py`: watermark and end card
-- `anonbrain/pipeline.py`: ties it all together
-- `anonbrain/automation.py` + `reddit_source.py`: Automate (picking, making, schedule)
-- `anonbrain/posting/`: TikTok, YouTube and Instagram uploads; `oauth.py`: sign-ins
-- `anonbrain/ui/`: the desktop app
-- `make_video.py`: quick command-line test of the engine (no voice)
-- `tests/` + `run_tests.bat`: the checks above
+## Running it from the code
+To run it with Python, build the installer yourself or work on the code, see
+**[BUILDING.md](BUILDING.md)**.
