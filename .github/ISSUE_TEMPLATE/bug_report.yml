@@ -1,0 +1,52 @@
+name: Bug report
+description: Something in Anon Brain isn't working.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting it! The **error details** box below is the most useful part.
+  - type: textarea
+    id: what
+    attributes:
+      label: What went wrong?
+      description: What did you expect, and what happened instead?
+      placeholder: I pressed Make video and it stopped at "Rendering video... 40%".
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: What were you doing?
+      description: The steps that lead to it, if you can make it happen again.
+      placeholder: |
+        1. Pasted a Reddit link
+        2. Picked the Captions look
+        3. Pressed Make video
+  - type: textarea
+    id: details
+    attributes:
+      label: Error details
+      description: In Anon Brain, go to **Settings → About → Copy error details** and paste it here. It never includes your keys or sign-ins.
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: Anon Brain version
+      description: Shown in Settings → About.
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: dropdown
+    id: windows
+    attributes:
+      label: Windows
+      options:
+        - Windows 11
+        - Windows 10
+        - Not sure
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else?
+      description: Screenshots or a short clip help a lot. Drag them into this box.

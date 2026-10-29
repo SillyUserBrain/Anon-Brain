@@ -1,0 +1,15 @@
+name: Idea or request
+description: Suggest something new for Anon Brain.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like it to do?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why would it help?
+      description: What kind of videos are you making, and what's getting in the way?

@@ -1,6 +1,10 @@
 # Anon Brain
 *Posts in, videos out.*
 
+[![Latest version](https://img.shields.io/github/v/release/SillyUserBrain/Anon-Brain?label=latest&color=8fc43f)](https://github.com/SillyUserBrain/Anon-Brain/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/SillyUserBrain/Anon-Brain/total?label=downloads&color=7a5cff)](https://github.com/SillyUserBrain/Anon-Brain/releases)
+![Windows 10 and 11](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6)
+
 > Vibe coded with Claude Opus 5.5.
 
 <p align="center"><img src="docs/images/splash.png" alt="The Anon Brain start screen" width="800"></p>
@@ -129,10 +133,23 @@ Apply one in a click. In a batch, each video can use a different preset.
 - Your settings, cleanup list and footage history are stored in
   `%APPDATA%\AnonBrain`. Your API key is stored in Windows Credential Manager.
 
+## Use it responsibly
+- **What you post is on you.** Follow the rules of every app you upload to,
+  including their rules on reposted content and AI voices.
+- **The posts belong to the people who wrote them.** Think twice before showing
+  someone's username, and follow Reddit's and 4chan's rules on reusing their
+  content. Automate reads Reddit's public pages, so the same goes for it.
+- **Use gameplay and music you're allowed to use.** Apps can mute or take down
+  videos with copyrighted songs.
+- **Don't spam.** Posting dozens of near-identical videos a day can get an
+  account flagged; keep Automate's schedule reasonable.
+
+Anon Brain isn't affiliated with Reddit, 4chan, TikTok, YouTube or Instagram.
+
 ## Something not working?
 Settings → About → **Copy error details** (also offered next to error messages
-and in the crash window), then paste it into a new
-[issue](https://github.com/SillyUserBrain/Anon-Brain/issues). It never
+and in the crash window), then open a
+[bug report](https://github.com/SillyUserBrain/Anon-Brain/issues/new/choose) and paste it in. It never
 includes your keys or sign-ins.
 
 ## Running it from the code
