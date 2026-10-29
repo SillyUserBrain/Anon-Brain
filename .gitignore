@@ -1,0 +1,14 @@
+# Made on your PC, not part of the code
+.venv/
+build/
+dist/
+build_tools/
+output/
+test_media/
+__pycache__/
+*.pyc
+*.log
+
+# Windows clutter
+Thumbs.db
+desktop.ini
